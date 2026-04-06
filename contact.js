@@ -46,55 +46,70 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
 
 
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault(); // Page reload roko
+    
+    const btn = document.querySelector('.submit-btn');
+    const status = document.getElementById('formStatus');
+    const originalText = btn.innerHTML; // Purana text save kar lo (Send Message)
+    
+    // --- AAPKA PURANA STYLE (START) ---
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    btn.style.opacity = '0.7';
+    btn.disabled = true;
+    // --- AAPKA PURANA STYLE (END) ---
 
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Isse Formspree ka boring page nahi khulega
-        
-        // Button loading state
-        const originalText = submitBtn.innerText;
-        submitBtn.innerText = "Sending...";
-        submitBtn.disabled = true;
+    const formData = new FormData(this);
 
-        const formData = new FormData(contactForm);
+    try {
+        // ASLI DATA SENDING (Formspree Connect)
+        const response = await fetch("https://formspree.io/f/xvzvdwzw", {
+            method: "POST",
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
 
-        try {
-            const response = await fetch("https://formspree.io/f/xvzvdwzw", {
-                method: "POST",
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
+        if (response.ok) {
+            // --- SUCCESS HONE PAR AAPKA PURANA STYLE ---
+            btn.innerHTML = 'Message Sent!';
+            btn.style.background = '#10b981'; // Green color
+            
+            status.innerHTML = '<p style="color: #10b981; margin-top: 15px; font-weight: 600;">Thank you! Our team will call you shortly.</p>';
 
-            if (response.ok) {
-                // SUCCESS POP-UP
-                Swal.fire({
-                    title: 'Message Sent! 🚀',
-                    html: 'Thank you for contacting <b style="color:#d4af37">Quantum Quest Innovations</b>.<br>We will get back to you shortly.',
-                    icon: 'success',
-                    confirmButtonColor: '#101828', // Aapka navy blue button color
-                    confirmButtonText: 'Perfect!'
-                }).then(() => {
-                    contactForm.reset(); // Form khali kar dega
-                });
-            } else {
-                throw new Error();
-            }
-        } catch (error) {
-            // ERROR POP-UP
+            // SAATH MEIN NAYA POP-UP (SweetAlert)
             Swal.fire({
-                title: 'Oops!',
-                text: 'Something went wrong. Please try again later.',
-                icon: 'error',
+                title: 'Success! 🎉',
+                text: 'Your request has been sent to Quantum Quest Innovations.',
+                icon: 'success',
                 confirmButtonColor: '#101828'
             });
-        } finally {
-            // Button wapas normal
-            submitBtn.innerText = originalText;
-            submitBtn.disabled = false;
+
+            this.reset(); // Form khali kar do
+
+            // 3 second baad button ko wapas normal karna
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '#0f172a'; // Purana dark color
+                btn.style.opacity = '1';
+                btn.disabled = false;
+                status.innerHTML = ''; // Status message hide kar do
+            }, 3000);
+
+        } else {
+            throw new Error();
         }
-    });
+    } catch (error) {
+        // ERROR HONE PAR
+        Swal.fire('Oops!', 'Message nahi ja paya. Internet check karein.', 'error');
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+    }
+});
 </script>
