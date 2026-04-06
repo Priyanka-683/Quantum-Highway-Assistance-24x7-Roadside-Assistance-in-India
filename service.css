@@ -587,3 +587,71 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Logo & Text Visibility Fix --- */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0; /* Isse logo area dabe ga nahi */
+}
+
+.nav-logo {
+    width: 35px;
+    height: auto;
+}
+
+.brand-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    color: var(--gold);
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.2;
+    white-space: nowrap; /* Sabse zaroori: Isse text ek hi line mein rahega */
+}
+
+/* --- Mobile Specific Fixes --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Mobile par logo upar aur menu niche */
+        height: auto;
+        padding: 15px 0;
+        gap: 15px;
+    }
+
+    .logo-area {
+        width: 100%;
+        justify-content: center; /* Mobile par center align */
+    }
+
+    .brand-title {
+        font-size: 1rem; /* Screen ke hisaab se thoda chota text */
+    }
+
+    .brand-tagline {
+        font-size: 0.6rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    /* Bahut chote phones ke liye */
+    .brand-title {
+        font-size: 0.85rem; 
+    }
+}
