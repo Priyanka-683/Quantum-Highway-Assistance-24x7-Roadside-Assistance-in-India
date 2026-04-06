@@ -182,3 +182,55 @@ if(ctaBtn) {
 
 
 
+<script>
+    const contactForm = document.getElementById('contactForm');
+    
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const btn = document.getElementById('submitBtn');
+        const originalText = btn.innerText;
+        
+        // Loading state
+        btn.innerText = "Sending...";
+        btn.disabled = true;
+
+        const formData = new FormData(contactForm);
+
+        try {
+            const response = await fetch("https://formspree.io/f/xvzvdwzw", {
+                method: "POST",
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                // Success Pop-up
+                Swal.fire({
+                    title: 'Message Sent! 🚀',
+                    html: 'Thank you for reaching out to <b style="color:#d4af37">Quantum Quest Innovations</b>.<br><br>We have received your message and will get back to you shortly.',
+                    icon: 'success',
+                    confirmButtonColor: '#d4af37',
+                    confirmButtonText: 'Understood!',
+                    backdrop: `rgba(16, 24, 40, 0.4)`
+                }).then(() => {
+                    contactForm.reset(); // Form clear karne ke liye
+                });
+            } else {
+                throw new Error();
+            }
+        } catch (error) {
+            // Error Pop-up
+            Swal.fire({
+                title: 'Oops!',
+                text: 'Something went wrong. Please check your connection and try again.',
+                icon: 'error',
+                confirmButtonColor: '#d4af37'
+            });
+        } finally {
+            // Re-enable button
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    });
+</script>
