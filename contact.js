@@ -46,47 +46,55 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-    // 1. Form aur Button ko pakadna
-    const myForm = document.getElementById('contactForm');
-    const myBtn = document.getElementById('submitBtn');
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
 
-    if(myForm) {
-        myForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Page refresh roko
-            
-            myBtn.innerText = "Sending...";
-            myBtn.disabled = true;
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Isse Formspree ka boring page nahi khulega
+        
+        // Button loading state
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = "Sending...";
+        submitBtn.disabled = true;
 
-            // 2. Formspree ko data bhejna
-            fetch("https://formspree.io/f/xvzvdwzw", {
+        const formData = new FormData(contactForm);
+
+        try {
+            const response = await fetch("https://formspree.io/f/xvzvdwzw", {
                 method: "POST",
-                body: new FormData(myForm),
+                body: formData,
                 headers: { 'Accept': 'application/json' }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Success Popup
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Message sent successfully to Quantum Quest Innovations',
-                        icon: 'success',
-                        confirmButtonColor: '#101828'
-                    });
-                    myForm.reset(); // Form khali karo
-                } else {
-                    Swal.fire('Error', 'Server issue, please try again.', 'error');
-                }
-            })
-            .catch(error => {
-                Swal.fire('Error', 'Check your internet connection.', 'error');
-            })
-            .finally(() => {
-                myBtn.innerText = "Send Message";
-                myBtn.disabled = false;
             });
-        });
-    } else {
-        console.log("Error: Form ID 'contactForm' nahi mili!");
-    }
+
+            if (response.ok) {
+                // SUCCESS POP-UP
+                Swal.fire({
+                    title: 'Message Sent! 🚀',
+                    html: 'Thank you for contacting <b style="color:#d4af37">Quantum Quest Innovations</b>.<br>We will get back to you shortly.',
+                    icon: 'success',
+                    confirmButtonColor: '#101828', // Aapka navy blue button color
+                    confirmButtonText: 'Perfect!'
+                }).then(() => {
+                    contactForm.reset(); // Form khali kar dega
+                });
+            } else {
+                throw new Error();
+            }
+        } catch (error) {
+            // ERROR POP-UP
+            Swal.fire({
+                title: 'Oops!',
+                text: 'Something went wrong. Please try again later.',
+                icon: 'error',
+                confirmButtonColor: '#101828'
+            });
+        } finally {
+            // Button wapas normal
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
+    });
 </script>
