@@ -959,3 +959,79 @@ body { background-color: #fcfcfd; }
 
 /* Agar aapko bright yellow chahiye toh ye use karein: */
 /* .yellow-text { color: #ffcc00; } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Desktop pe icon hide rakho */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: #d4af37; /* Gold color */
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Mobile pe dikhega */
+    }
+
+    /* Navbar alignment */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+    }
+
+    /* Menu ko Sidebar banana */
+    nav {
+        position: fixed;
+        left: -100%; /* Shuru mein screen se bahar */
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        background: #101828; /* Dark Navy */
+        transition: 0.4s ease;
+        z-index: 1000;
+        padding-top: 80px;
+    }
+
+    /* Jab click ho tab menu andar aaye */
+    nav.active {
+        left: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 30px;
+        gap: 25px !important;
+    }
+
+    .nav-links li a {
+        color: #fff !important;
+        font-size: 1.2rem;
+    }
+}
