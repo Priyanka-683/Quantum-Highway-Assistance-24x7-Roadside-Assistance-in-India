@@ -1,0 +1,469 @@
+:root {
+    --gold: #d4af37;
+    --navy-dark: #101828;
+    --navy-light: #1c2531;
+    --border-color: #eaecf0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.header { background: #fff; height: 75px; display: flex; align-items: center; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+.navbar { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.logo-area { display: flex; align-items: center; gap: 10px; }
+.nav-logo { width: 35px; }
+.brand-title { color: var(--gold); font-size: 1.1rem; font-weight: 800; }
+.brand-tagline { color: #53b1fd; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; margin-top: -2px; }
+.nav-menu { display: flex; list-style: none; gap: 20px; }
+.nav-menu a { text-decoration: none; color: #475467; font-weight: 600; font-size: 0.85rem; }
+.nav-menu a.active { color: var(--gold); }
+.nav-cta { background: var(--gold); color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
+
+/* Hero */
+.hero-section { background: var(--navy-dark); padding: 70px 0; text-align: center; color: #fff; }
+.hero-section h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+.accent { color: var(--gold); }
+.hero-section p { color: #cbd5e0; font-size: 0.95rem; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --brand-gold: #d4af37;
+    --navy: #101828;
+    --soft-blue: #53b1fd;
+    --border-light: #f2f4f7;
+}
+
+.container { max-width: 1140px; margin: 0 auto; padding: 40px 20px; }
+
+/* Grid Layout */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+/* Card Styling */
+.s-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.s-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+    border-color: var(--brand-gold);
+}
+
+.s-card-accent {
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--brand-gold);
+}
+
+.s-card-body { padding: 30px; }
+
+.s-header { display: flex; gap: 15px; margin-bottom: 20px; }
+
+.s-icon-box { font-size: 1.3rem; opacity: 0.8; }
+
+.s-title h3 { font-size: 1.05rem; color: var(--navy); font-weight: 700; margin: 0; }
+.s-title p { font-size: 0.82rem; color: #667085; font-weight: 400; margin-top: 4px; }
+
+/* Feature List (Smooth Weight) */
+.s-feature-list { list-style: none; padding: 15px 0 0 0; border-top: 1px solid #fcfcfd; }
+.s-feature-list li {
+    font-size: 0.85rem;
+    font-weight: 400; /* No bold, very smooth */
+    color: #475467;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.s-dot { width: 6px; height: 6px; background: var(--brand-gold); border-radius: 50%; }
+
+/* Benefits Bar */
+.b-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.b-item {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+}
+
+.b-item h4 { font-size: 1.6rem; font-weight: 800; margin-bottom: 5px; }
+.b-item h4.gold { color: var(--brand-gold); }
+.b-item h4.blue { color: var(--soft-blue); }
+.b-item p { font-size: 0.7rem; font-weight: 700; color: #667085; text-transform: uppercase; }
+
+/* Reveal Animation */
+.reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) { .b-grid { grid-template-columns: 1fr 1fr; } }
+
+
+
+
+
+
+
+
+
+.text-center {
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 40px; /* Boxes se thoda distance rakhne ke liye */
+    letter-spacing: -0.02em;
+}
+
+.gold-text {
+    color: var(--brand-gold);
+}
+
+/* Ensure the benefits bar has enough padding */
+.benefits-bar {
+    padding: 60px 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.how-it-works { padding: 80px 20px; }
+.sub-text { color: #667085; margin-bottom: 50px; font-size: 0.9rem; }
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.gold-bg { background-color: #d4af37; }
+.blue-bg { background-color: #53b1fd; }
+
+.step-item h4 { font-size: 1.1rem; margin-bottom: 10px; color: #101828; }
+.step-item p { font-size: 0.85rem; color: #475467; line-height: 1.6; font-weight: 400; }
+
+
+
+
+
+
+
+
+
+
+
+
+.emergency-cta {
+    background-color: #0f172a; /* Dark Navy Background */
+    padding: 80px 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.cta-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.cta-content p {
+    font-size: 1.1rem;
+    color: #cbd5e1; /* Subtle greyish white */
+    max-width: 600px;
+    margin: 0 auto 35px;
+    line-height: 1.6;
+}
+
+.cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Mobile friendly */
+}
+
+/* Yellow Call Button */
+.btn-call {
+    background-color: #d4a017; /* Muted Gold/Yellow from image */
+    color: #ffffff;
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s ease;
+}
+
+.btn-call:hover {
+    background-color: #b8860b;
+    transform: translateY(-3px);
+}
+
+/* Outline Contact Button */
+.btn-contact {
+    border: 2px solid #334155; /* Subtle border */
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-contact:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .cta-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn-call, .btn-contact {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-footer {
+    background-color: #101828; /* Dark Navy Background */
+    color: #ffffff;
+    padding: 80px 0 30px;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr; /* Matches the layout width */
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Brand Section */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    width: 40px;
+    height: auto;
+}
+
+.brand-title {
+    color: #d4af37; /* Gold Title */
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.brand-tagline {
+    color: #53b1fd; /* Light Blue Subtext */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.footer-about {
+    color: #98a2b3;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 400px;
+}
+
+/* Social Icons */
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #d4af37;
+    color: #101828;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+}
+
+/* Column Titles */
+.col-title {
+    color: #d4af37;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* Links & Contact List */
+.footer-links, .contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, .contact-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.footer-links a, .contact-list a, .contact-list span {
+    color: #98a2b3;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover, .contact-list a:hover {
+    color: #ffffff;
+}
+
+.contact-list .icon {
+    color: #53b1fd; /* Blue icons from screenshot */
+    font-size: 1rem;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.footer-bottom p {
+    color: #667085;
+    font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .logo-area, .social-links, .footer-links li, .contact-list li {
+        justify-content: center;
+    }
+    .footer-about {
+        margin: 0 auto 25px;
+    }
+}
+
+
+
+
+
+
+
+.brand-title {
+    margin-bottom: 8px; /* Isse title ke niche aur tagline ke upar space aayegi */
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.brand-tagline {
+    margin-top: 0; /* Extra margin reset karne ke liye */
+    font-size: 0.75rem;
+    color: #eab308; /* Yellow color for support text */
+}
+
+
+
+
+
+

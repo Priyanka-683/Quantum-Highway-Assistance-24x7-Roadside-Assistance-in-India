@@ -1,0 +1,943 @@
+/* =========================================
+   1. GLOBAL & THEME VARIABLES
+   ========================================= */
+:root {
+    --primary-yellow: #f1b400;
+    --dark-bg: #0e1a2d;
+    --text-main: #1a1a1a;
+    --text-muted: #666666;
+    --white: #ffffff;
+    --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. NAVIGATION BAR
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8%;
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo-area { display: flex; align-items: center; gap: 10px; }
+.logo-img { height: 38px; }
+.logo-text h1 { font-size: 1rem; font-weight: 800; color: var(--dark-bg); }
+.logo-text span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
+
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; }
+
+.nav-cta {
+    background: var(--primary-yellow);
+    color: #000;
+    padding: 8px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================================
+   3. HERO SECTION (Balanced Text Sizes)
+   ========================================= */
+.hero {
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background: linear-gradient(75deg, rgba(14, 26, 45, 0.98) 35%, rgba(14, 26, 45, 0.4) 100%), 
+                url('highway.png'); 
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+}
+
+.hero-content { max-width: 650px; }
+
+/* Fixed Huge Text Size */
+.hero-content h1 {
+    font-size: 2.8rem; /* Pehle 3.8rem tha, ab chota kar diya */
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.hero-content h3 {
+    font-size: 1.2rem; /* Balanced subtitle */
+    font-weight: 400;
+    color: #cbd5e1;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* Button Layout Fix */
+.hero-btns { display: flex; gap: 15px; }
+
+.btn {
+    padding: 12px 28px; /* Slightly smaller buttons */
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition-smooth);
+}
+
+.btn-yellow { background-color: var(--primary-yellow); color: #000; }
+.btn-outline { border: 1.5px solid var(--white); color: var(--white); }
+
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+/* =========================================
+   4. SERVICES SECTION
+   ========================================= */
+.services { padding: 80px 8%; background-color: #f8fafc; }
+
+.section-header h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; text-align: center; }
+.section-header p { color: var(--text-muted); font-size: 1rem; text-align: center; margin-bottom: 40px; }
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: var(--transition-smooth);
+}
+
+.icon-box {
+    font-size: 1.4rem;
+    color: var(--primary-yellow);
+    margin-bottom: 15px;
+}
+
+.service-card h3 { font-size: 1.15rem; margin-bottom: 10px; color: var(--dark-bg); }
+.service-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; }
+
+/* =========================================
+   5. RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content h3 { font-size: 1rem; }
+    .nav-links { display: none; }
+}
+
+
+
+
+
+
+
+/* --- View All Services Button (Centered & Yellow) --- */
+.view-all {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center; /* This moves it to the middle */
+    align-items: center;
+}
+
+.view-all a {
+    text-decoration: none;
+    color: var(--primary-yellow); /* Yellow Color */
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    transition: var(--transition-smooth);
+}
+
+.view-all a i {
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect */
+.view-all a:hover {
+    color: #e5aa00; /* Slightly darker yellow on hover */
+}
+
+.view-all a:hover i {
+    transform: translateX(8px); /* Arrow moves slightly to the right */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Section Base */
+.about-section {
+    padding: 50px 0;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+/* Isse pura content screen ke beech mein aayega */
+.about-container {
+    max-width: 1000px; /* Width thodi kam rakhi hai taaki faila hua na lage */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Text Styling (STRICTLY LEFT ALIGNED) */
+.about-content {
+    flex: 1;
+    text-align: left; /* Text left se shuru hoga */
+}
+
+.about-h2 {
+    font-size: 1.5rem; /* Small & Professional font */
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.yellow {
+    color: #ffcc00;
+}
+
+.about-p {
+    font-size: 0.9rem; /* Compact size */
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* List Styling */
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.about-list li {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    text-align: left; /* List items bhi left mein rahenge */
+}
+
+.about-list i {
+    color: #ffcc00;
+    font-size: 1rem;
+}
+
+/* Small Compact Button */
+.btn-about {
+    display: inline-block;
+    background: #ffcc00;
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+/* Image Styling */
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Image ko right side mein push karega */
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 380px; /* Image zyada badi nahi hogi */
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .about-wrapper {
+        flex-direction: column;
+        text-align: left; /* Mobile par bhi left hi rahega */
+    }
+    
+    .about-image {
+        justify-content: center; /* Mobile par image center mein acchi lagti hai */
+    }
+}
+
+
+
+
+
+
+/* About Section Base */
+.about-section {
+    padding: 60px 0;
+    background-color: #ffffff; /* Background white rakha hai */
+    display: flex;
+    justify-content: center; /* Pura content screen ke beech mein laane ke liye */
+}
+
+/* Container to keep content tight in the middle */
+.about-container {
+    max-width: 1050px; 
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Flex row for side-by-side layout */
+.about-flex-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px; /* Text aur Image ke beech ki jagah */
+}
+
+/* Left Content - Strictly Left Aligned */
+.about-text-content {
+    flex: 1;
+    text-align: left;
+}
+
+.about-title {
+    font-size: 1.8rem; /* Professional small size */
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+.yellow-text {
+    color: #ffcc00;
+}
+
+.about-p {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* List Style */
+.about-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.about-features li {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.about-features i {
+    color: #ffcc00; /* Yellow check icons */
+    font-size: 1.1rem;
+}
+
+/* Learn More Button */
+.about-btn {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000;
+    padding: 10px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+.about-btn:hover {
+    background-color: #e6b800;
+    transform: translateY(-2px);
+}
+
+/* Right Side Image Styling */
+.about-image-box {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-image-box img {
+    width: 100%;
+    max-width: 450px; /* Image size control mein */
+    height: auto;
+    border-radius: 12px; /* Rounded corners like your screenshot */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .about-flex-row {
+        flex-direction: column; /* Phone par ek ke niche ek */
+        text-align: left;
+    }
+    
+    .about-image-box {
+        order: -1; /* Phone par image pehle dikhegi */
+        justify-content: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Cards ko interactive banane ke liye */
+.service-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    
+    /* YEH ZAROORI HAI: Animation smooth karne ke liye */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+/* Jab mouse card ke upar jaye (Hover Effect) */
+.service-card:hover {
+    transform: translateY(-12px); /* Card upar uthega */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Shadow gehri hogi */
+    border-color: #ffcc00; /* Border yellow ho jayegi */
+}
+
+/* Icon Box ki animation */
+.icon-box i {
+    font-size: 2.5rem;
+    color: #ffcc00;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .icon-box i {
+    transform: rotateY(360deg); /* Icon gol ghumega */
+}
+
+/* View More Button Animation */
+.view-more a {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.view-more a:hover {
+    letter-spacing: 1px; /* Text thoda failega */
+    color: #ffcc00;
+}
+
+.view-more a:hover i {
+    transform: translateX(8px); /* Arrow thoda aage jayega */
+}
+
+
+
+
+
+
+
+
+.hide-card { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+.show-card { opacity: 1; transform: translateY(0); }
+
+
+
+
+
+
+
+
+
+
+/* Container ko target karo */
+.view-more {
+    display: flex;            /* Flexbox use karein */
+    justify-content: center;   /* Horizontal center karne ke liye */
+    margin-top: 40px;          /* Cards aur button ke beech thodi jagah */
+    width: 100%;               /* Pura area cover karne ke liye */
+}
+
+/* Button ki styling (optional agar pehle se nahi ki hai) */
+.view-more a {
+    background-color: #ffcc00; /* Yellow color */
+    color: #000;               /* Black text */
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;                 /* Text aur arrow ke beech space */
+    transition: 0.3s ease;     /* Animation smooth karne ke liye */
+}
+
+/* Hover effect taaki button "live" lage */
+.view-more a:hover {
+    background-color: #e6b800;
+    transform: scale(1.05);    /* Thoda bada hoga hover par */
+}
+
+.view-more a i {
+    transition: transform 0.3s ease;
+}
+
+.view-more a:hover i {
+    transform: translateX(5px); /* Arrow thoda aage khisakega */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Container with more side padding */
+.custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px; /* Isse left aur right side se acchi space milegi */
+}
+
+.testimonials {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.yellow-text {
+    color: #ffcc00;
+}
+
+/* Grid Layout */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Card Styling */
+.testimonial-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 5px solid #ffcc00;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation on Hover */
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.stars {
+    color: #ffcc00;
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+}
+
+.testimonial-card p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.customer-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #222;
+}
+
+/* Mobile Responsive Padding Adjustment */
+@media (max-width: 768px) {
+    .custom-container {
+        padding: 0 25px; /* Mobile par padding thodi kam taaki cards bade dikhe */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --gold: #d4af37;
+    --navy: #101828;
+    --border-ultra-light: #f2f4f7;
+    --text-regular: #475467;
+}
+
+/* Background ko halka sa off-white rakha hai smooth look ke liye */
+body { background-color: #fcfcfd; }
+
+.service-main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    background: #ffffff;
+    border: 1px solid var(--border-ultra-light);
+    border-radius: 12px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Hover par subtle shadow, koi heavy glow nahi */
+.service-card:hover {
+    transform: translateY(-4px);
+    border-color: #e4e7ec;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+}
+
+.card-content { padding: 24px; }
+
+.icon-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+
+.icon-minimal {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* Headings ko Clean aur Sharp rakha hai */
+.title-text h3 { 
+    font-size: 1rem; 
+    color: var(--navy); 
+    font-weight: 600; /* Semi-bold for clarity */
+    letter-spacing: -0.01em;
+}
+
+.title-text p { 
+    font-size: 0.8rem; 
+    color: #667085; 
+    font-weight: 400; /* Regular weight */
+    margin-top: 2px;
+}
+
+/* List Items - Removed BOLD weights */
+.feature-list { list-style: none; padding-top: 10px; border-top: 1px solid #f9fafb; }
+
+.feature-list li {
+    font-size: 0.85rem; 
+    font-weight: 400; /* Strictly NOT bold */
+    color: var(--text-regular);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Thin Custom Checkmark */
+.thin-check {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--gold);
+    flex-shrink: 0;
+}
+
+/* Smooth Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+.how-it-works { padding: 80px 20px; }
+.sub-text { color: #667085; margin-bottom: 50px; font-size: 0.9rem; }
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.gold-bg { background-color: #d4af37; }
+.blue-bg { background-color: #53b1fd; }
+
+.step-item h4 { font-size: 1.1rem; margin-bottom: 10px; color: #101828; }
+.step-item p { font-size: 0.85rem; color: #475467; line-height: 1.6; font-weight: 400; }
+
+
+
+
+
+
+
+
+
+
+
+
+/* CTA Section Styling */
+.cta-section {
+    background-color: #0f172a; /* Dark Blue/Black */
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+
+.cta-container h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.cta-container p {
+    font-size: 1rem;
+    color: #cbd5e1;
+    margin-bottom: 25px;
+}
+
+.cta-button {
+    background-color: #eab308; /* Premium Yellow */
+    color: #000;
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ca8a04;
+    transform: scale(1.05);
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #020617; /* Deeper Dark */
+    color: #94a3b8;
+    padding: 60px 0 20px;
+    border-top: 1px solid #1e293b;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px; /* Padding for side space */
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 40px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-logo h3 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.footer-logo span {
+    font-size: 0.75rem;
+    color: #eab308;
+}
+
+.footer-col h4 {
+    color: #eab308;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.footer-links, .contact-details {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, .contact-details li {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.contact-details i {
+    color: #eab308;
+    margin-right: 10px;
+}
+
+/* Social Icons Animation */
+.social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 35px;
+    height: 35px;
+    background: #1e293b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eab308;
+    transition: 0.4s;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background: #eab308;
+    color: #000;
+    transform: rotate(360deg);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #1e293b;
+    font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    .footer-container { padding: 0 25px; }
+}
