@@ -941,3 +941,21 @@ body { background-color: #fcfcfd; }
     .footer-grid { grid-template-columns: 1fr; gap: 30px; }
     .footer-container { padding: 0 25px; }
 }
+
+
+
+
+
+
+
+
+
+
+
+.yellow-text {
+    color: #d4af37; /* Aapka branding gold/yellow color */
+    display: inline-block; /* Animation smooth rakhne ke liye */
+}
+
+/* Agar aapko bright yellow chahiye toh ye use karein: */
+/* .yellow-text { color: #ffcc00; } */
