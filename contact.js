@@ -47,16 +47,17 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     const contactForm = document.getElementById('contactForm');
     
     contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Page refresh hone se rokta hai
         
         const btn = document.getElementById('submitBtn');
         const originalText = btn.innerText;
         
-        // Button loading state
+        // Button loading state (Design wahi rahega, bas text badlega)
         btn.innerText = "Sending...";
         btn.disabled = true;
 
@@ -70,14 +71,12 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
             });
 
             if (response.ok) {
-                // Success Popup
+                // Success Popup (Aapke navy-blue theme se match karta hua)
                 Swal.fire({
                     title: 'Message Sent! 🚀',
-                    html: 'Thank you for reaching out to <b style="color:#d4af37">Quantum Quest Innovations</b>.<br><br>We will get back to you shortly.',
+                    html: 'Thank you! We have received your message at <b style="color:#d4af37">Quantum Quest Innovations</b>.',
                     icon: 'success',
-                    confirmButtonColor: '#d4af37',
-                    confirmButtonText: 'Great!',
-                    backdrop: `rgba(16, 24, 40, 0.5)`
+                    confirmButtonColor: '#101828' // Screenshot wala dark blue color
                 }).then(() => {
                     contactForm.reset(); // Form clear ho jayega
                 });
@@ -85,13 +84,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
                 throw new Error();
             }
         } catch (error) {
-            // Error Popup
-            Swal.fire({
-                title: 'Submission Failed',
-                text: 'Please check your internet connection and try again.',
-                icon: 'error',
-                confirmButtonColor: '#d4af37'
-            });
+            Swal.fire('Oops!', 'Kuch galat hua. Please internet check karke dobara try karein.', 'error');
         } finally {
             // Button wapas normal ho jayega
             btn.innerText = originalText;

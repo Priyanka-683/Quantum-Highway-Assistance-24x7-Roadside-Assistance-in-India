@@ -35,21 +35,27 @@
         </div>
     </section>
 
-    <form id="contactForm">
-    <div class="input-group">
-        <input type="text" name="name" id="name" placeholder="Your Name" required>
-    </div>
-    <div class="input-group">
-        <input type="email" name="email" id="email" placeholder="Your Email" required>
-    </div>
-    <div class="input-group">
-        <input type="tel" name="phone" id="phone" placeholder="Phone Number" required>
-    </div>
-    <div class="input-group">
-        <textarea name="message" id="message" rows="5" placeholder="How can we help you?" required></textarea>
-    </div>
-    <button type="submit" id="submitBtn" class="submit-btn">Send Message</button>
-</form>
+    <section class="contact-container">
+        <div class="contact-wrapper">
+            <div class="contact-form-card">
+                <h3>Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="input-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                <div id="formStatus"></div>
+            </div>
 
             <div class="contact-info-list">
     <div class="info-item">
