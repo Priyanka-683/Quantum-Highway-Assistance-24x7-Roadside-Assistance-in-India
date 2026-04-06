@@ -177,29 +177,7 @@ if(ctaBtn) {
 
 
 
-<script>
-    const menuIcon = document.getElementById('mobile-menu');
-    const sideMenu = document.getElementById('nav-menu');
 
-    // Click karne par menu open/close hoga
-    menuIcon.addEventListener('click', () => {
-        sideMenu.classList.toggle('active');
-        
-        // Icon change (Bars to X)
-        const icon = menuIcon.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-    });
-
-    // Kisi link par click karte hi menu apne aap band ho jaye
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            sideMenu.classList.remove('active');
-            menuIcon.querySelector('i').classList.add('fa-bars');
-            menuIcon.querySelector('i').classList.remove('fa-times');
-        });
-    });
-</script>
 
 
 
