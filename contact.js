@@ -5,7 +5,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     const status = document.getElementById('formStatus');
     const originalText = 'Send Message'; 
     
-    // 1. Loading Animation (Purana Style)
+    // 1. Loading State
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     btn.style.opacity = '0.7';
     btn.disabled = true;
@@ -13,23 +13,26 @@ document.getElementById('contactForm').addEventListener('submit', async function
     const formData = new FormData(this);
 
     try {
-        // 2. Asli Data Sending (Formspree)
+        // 2. Data Sending
         const response = await fetch("https://formspree.io/f/xvzvdwzw", {
             method: "POST",
             body: formData,
-            headers: { 'Accept': 'application/json' }
+            headers: { 
+                'Accept': 'application/json' // Ye Formspree ko batata hai ki hume JSON response chahiye
+            }
         });
 
+        // 3. Response Check (Yahan galti ho rahi thi)
         if (response.ok) {
-            // 3. Success Animation (Purana Style)
+            // SUCCESS UI
             btn.innerHTML = 'Message Sent!';
-            btn.style.background = '#10b981'; // Green
+            btn.style.background = '#10b981'; 
             status.innerHTML = '<p style="color: #10b981; margin-top: 15px; font-weight: 600;">Thank you! Our team will call you shortly.</p>';
 
-            // 4. Naya Pop-up (SweetAlert)
+            // Success Pop-up
             Swal.fire({
                 title: 'Success! 🎉',
-                text: 'Your request has been sent to Quantum Quest Innovations.',
+                text: 'Your message has been sent successfully.',
                 icon: 'success',
                 confirmButtonColor: '#101828'
             });
@@ -45,18 +48,20 @@ document.getElementById('contactForm').addEventListener('submit', async function
             }, 3000);
 
         } else {
-            throw new Error();
+            // Agar server 400/500 error de
+            const data = await response.json();
+            throw new Error(data.error || "Submission failed");
         }
-    } } catch (error) {
-    console.log("Asli Error ye hai:", error); // Console mein check karne ke liye
-    Swal.fire('Oops!', 'Something went wrong. Check Console (F12) for details.', 'error');
-    btn.innerHTML = originalText;
-    btn.disabled = false;
-    btn.style.opacity = '1';
 
+    } catch (error) {
+        // Ye sirf tab chalega jab Sach mein internet band ho ya request block ho
+        console.error("Error details:", error);
+        Swal.fire('Oops!', 'Something went wrong. Please try again.', 'error');
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+    }
 });
-
-
 
     
 
