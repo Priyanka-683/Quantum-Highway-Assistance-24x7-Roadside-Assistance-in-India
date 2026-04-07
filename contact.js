@@ -47,7 +47,15 @@ document.getElementById('contactForm').addEventListener('submit', async function
         } else {
             throw new Error();
         }
-    
+    } } catch (error) {
+    console.log("Asli Error ye hai:", error); // Console mein check karne ke liye
+    Swal.fire('Oops!', 'Something went wrong. Check Console (F12) for details.', 'error');
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+    btn.style.opacity = '1';
+
+});
+
 
 
     
