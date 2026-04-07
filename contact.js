@@ -44,15 +44,9 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 status.innerHTML = ''; 
             }, 3000);
 
-        } else {
-            throw new Error();
-        }
-    } catch (error) {
-        Swal.fire('Oops!', 'Check your internet connection.', 'error');
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-        btn.style.opacity = '1';
-    }
+        } 
+        
+    } 
 });
 
 
