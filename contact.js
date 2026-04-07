@@ -5,7 +5,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     const status = document.getElementById('formStatus');
     const originalText = 'Send Message'; 
     
-    // 1. Loading State
+    // 1. Loading Animation (Purana Style)
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     btn.style.opacity = '0.7';
     btn.disabled = true;
@@ -13,26 +13,23 @@ document.getElementById('contactForm').addEventListener('submit', async function
     const formData = new FormData(this);
 
     try {
-        // 2. Data Sending
+        // 2. Asli Data Sending (Formspree)
         const response = await fetch("https://formspree.io/f/xvzvdwzw", {
             method: "POST",
             body: formData,
-            headers: { 
-                'Accept': 'application/json' // Ye Formspree ko batata hai ki hume JSON response chahiye
-            }
+            headers: { 'Accept': 'application/json' }
         });
 
-        // 3. Response Check (Yahan galti ho rahi thi)
         if (response.ok) {
-            // SUCCESS UI
+            // 3. Success Animation (Purana Style)
             btn.innerHTML = 'Message Sent!';
-            btn.style.background = '#10b981'; 
+            btn.style.background = '#10b981'; // Green
             status.innerHTML = '<p style="color: #10b981; margin-top: 15px; font-weight: 600;">Thank you! Our team will call you shortly.</p>';
 
-            // Success Pop-up
+            // 4. Naya Pop-up (SweetAlert)
             Swal.fire({
                 title: 'Success! 🎉',
-                text: 'Your message has been sent successfully.',
+                text: 'Your request has been sent to Quantum Quest Innovations.',
                 icon: 'success',
                 confirmButtonColor: '#101828'
             });
@@ -48,20 +45,17 @@ document.getElementById('contactForm').addEventListener('submit', async function
             }, 3000);
 
         } else {
-            // Agar server 400/500 error de
-            const data = await response.json();
-            throw new Error(data.error || "Submission failed");
+            throw new Error();
         }
-
     } catch (error) {
-        // Ye sirf tab chalega jab Sach mein internet band ho ya request block ho
-        console.error("Error details:", error);
-        Swal.fire('Oops!', 'Something went wrong. Please try again.', 'error');
+        Swal.fire('Oops!', 'Check your internet connection.', 'error');
         btn.innerHTML = originalText;
         btn.disabled = false;
         btn.style.opacity = '1';
     }
 });
+
+
 
     
 
